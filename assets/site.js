@@ -58,71 +58,6 @@ if (form) {
   });
 }
 
-// תפריט נגישות
-(() => {
-  const root = document.getElementById("a11y");
-  if (!root || !window.hzA11y) return;
-  const KEY = "hz-a11y";
-  const btn = document.getElementById("a11y-btn");
-  const panel = document.getElementById("a11y-panel");
-  const tip = root.querySelector(".a11y-tip");
-  let s = {};
-  try { s = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) {}
-
-  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} };
-  const render = () => {
-    hzA11y(s);
-    root.querySelectorAll(".a11y-tile").forEach(t => {
-      const k = t.dataset.a11y, n = +t.dataset.steps, v = s[k];
-      t.setAttribute("aria-pressed", !!v);
-      t.querySelectorAll(".dots i").forEach((d, i) => d.classList.toggle("on", i < (v || 0)));
-      const labels = t.dataset.labels ? t.dataset.labels.split("|") : [];
-      t.querySelector(".lbl").textContent = n && v ? labels[v - 1] : t.dataset.base;
-    });
-  };
-
-  // tiles: on/off or cycling through steps
-  root.querySelectorAll(".a11y-tile").forEach(t => t.addEventListener("click", () => {
-    const k = t.dataset.a11y, n = +t.dataset.steps;
-    if (n) { s[k] = ((s[k] || 0) + 1) % (n + 1); if (!s[k]) delete s[k]; }
-    else if (s[k]) delete s[k]; else s[k] = true;
-    save(); render();
-  }));
-  root.querySelector(".a11y-reset").addEventListener("click", () => { s = {}; save(); render(); });
-
-  // open / close
-  const open = () => { panel.hidden = false; btn.setAttribute("aria-expanded", "true"); root.querySelector(".a11y-x").focus(); };
-  const close = () => { panel.hidden = true; btn.setAttribute("aria-expanded", "false"); btn.focus(); };
-  btn.addEventListener("click", () => panel.hidden ? open() : close());
-  root.querySelector(".a11y-x").addEventListener("click", close);
-  addEventListener("keydown", e => {
-    if (e.altKey && (e.key === "a" || e.key === "A" || e.code === "KeyA")) {
-      e.preventDefault();
-      panel.hidden ? open() : close();
-    }
-    if (e.key === "Escape" && !panel.hidden) close();
-  });
-
-  // descriptions: show alt / aria-label / title of the hovered or focused element
-  const describe = el => {
-    const t = el && el.closest && el.closest("[aria-label],img[alt],[title]");
-    if (!t || root.contains(t)) return "";
-    return (t.getAttribute("aria-label") || t.getAttribute("alt") || t.getAttribute("title") || "").trim();
-  };
-  const showTip = (txt, x, y) => {
-    if (!s.tips || !txt) { tip.hidden = true; return; }
-    tip.textContent = txt; tip.hidden = false;
-    const w = tip.offsetWidth, h = tip.offsetHeight;
-    tip.style.left = Math.max(8, Math.min(innerWidth - w - 8, x - w / 2)) + "px";
-    tip.style.top = (y - h - 14 < 8 ? y + 22 : y - h - 14) + "px";
-  };
-  document.addEventListener("mouseover", e => showTip(describe(e.target), e.clientX, e.clientY));
-  document.addEventListener("focusin", e => { const r = e.target.getBoundingClientRect(); showTip(describe(e.target), r.left + r.width / 2, r.top); });
-  document.addEventListener("scroll", () => { tip.hidden = true; }, { passive: true });
-
-  render();
-})();
-
 // הודעת עוגיות – בדף הבית, פעם אחת בכל כניסה לאתר
 (() => {
   const box = document.getElementById("cookie");
@@ -131,16 +66,13 @@ if (form) {
   let seen = false;
   try { seen = !!sessionStorage.getItem(KEY); } catch (e) {}
   if (seen) return;
-  // lift the accessibility button above the bar while it is visible
-  const lift = () => document.body.style.setProperty("--cookie-h", box.offsetHeight + "px");
   setTimeout(() => {
-    box.hidden = false; lift(); document.body.classList.add("cookie-on");
+    box.hidden = false;
     requestAnimationFrame(() => box.classList.add("on"));
   }, 700);
-  addEventListener("resize", () => { if (!box.hidden) lift(); });
   box.querySelectorAll("[data-cookie]").forEach(b => b.addEventListener("click", () => {
     try { sessionStorage.setItem(KEY, b.dataset.cookie); } catch (e) {}   // "accept" / "decline"
-    box.classList.remove("on"); document.body.classList.remove("cookie-on");
+    box.classList.remove("on");
     setTimeout(() => { box.hidden = true; }, 400);
   }));
 })();

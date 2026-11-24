@@ -10,7 +10,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
-<script>window.hzA11y=function(s){var d=document.documentElement,f=[];d.className=d.className.replace(/\ba11y-\S+/g,"").trim();for(var k in s){if(!s[k]||k==="side"||k==="big")continue;d.classList.add("a11y-"+k+(s[k]===true?"":"-"+s[k]))}if(s.contrast===3)f.push("invert(1) hue-rotate(180deg)");if(s.sat)f.push(["saturate(.45)","saturate(1.8)","grayscale(1)"][s.sat-1]);d.style.setProperty("--a11y-filter",f.join(" ")||"none");d.classList.toggle("a11y-f",f.length>0)};try{hzA11y(JSON.parse(localStorage.getItem("hz-a11y")||"{}"))}catch(e){}</script>
 </head>
 <body id="top" style="--c:var(--business)">
 <a class="skip" href="#content">דילוג לתוכן הראשי</a>
@@ -192,73 +191,7 @@
     <div class="foot-bt"><span>© 1965-2026 כל הזכויות שמורות למושב חצבה - הערבה תיכונה</span><span class="legal-links"><a href="accessibility.html">הצהרת נגישות</a><a href="privacy.html">מדיניות פרטיות</a></span><a class="credit" href="https://ombee.co.il" target="_blank" rel="noopener"><span>עיצוב ובנייה ע"י</span><img src="images/ombee-logo-white.webp" alt="OMBee – Graphic Design and UI/UX"></a></div>
   </div>
 </footer>
-
-<div class="a11y" id="a11y">
-  <button class="a11y-btn" id="a11y-btn" aria-label="פתיחת תפריט נגישות (Alt+A)" aria-expanded="false" aria-controls="a11y-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.5" r="1.8" fill="currentColor"/><path d="M5 8.5c2.3.7 4.6 1 7 1s4.7-.3 7-1"/><path d="M12 9.5V14m0 0-3.2 6.5M12 14l3.2 6.5"/></svg></button>
-  <div class="a11y-panel" id="a11y-panel" role="dialog" aria-modal="false" aria-labelledby="a11y-title" hidden>
-    <div class="a11y-head">
-      <h2 id="a11y-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.5" r="1.8" fill="currentColor"/><path d="M5 8.5c2.3.7 4.6 1 7 1s4.7-.3 7-1"/><path d="M12 9.5V14m0 0-3.2 6.5M12 14l3.2 6.5"/></svg>תפריט נגישות</h2>
-      <button class="a11y-x" aria-label="סגירת תפריט הנגישות"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-    </div>
-    <div class="a11y-grid">
-      <button class="a11y-tile" data-a11y="contrast" data-steps="3" data-labels="ניגודיות כהה|ניגודיות בהירה|היפוך צבעים" data-base="ניגודיות +" aria-pressed="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
-        <span class="lbl">ניגודיות +</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-      </button>
-      <button class="a11y-tile" data-a11y="links" data-steps="0" data-labels="" data-base="הדגשת קישורים" aria-pressed="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg>
-        <span class="lbl">הדגשת קישורים</span>
-      </button>
-      <button class="a11y-tile" data-a11y="text" data-steps="3" data-labels="טקסט גדול|טקסט גדול יותר|טקסט גדול מאוד" data-base="טקסט גדול" aria-pressed="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5h10v2M8 5v14M6 19h4"/><path d="M14 11v-1h7v1M17.5 10v9M16 19h3"/></svg>
-        <span class="lbl">טקסט גדול</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-      </button>
-      <button class="a11y-tile" data-a11y="spacing" data-steps="3" data-labels="ריווח קל|ריווח בינוני|ריווח רחב" data-base="ריווח טקסט" aria-pressed="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18"/><path d="m6 9-3 3 3 3M18 9l3 3-3 3"/></svg>
-        <span class="lbl">ריווח טקסט</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-      </button>
-      <button class="a11y-tile" data-a11y="anim" data-steps="0" data-labels="" data-base="ביטול הנפשות" aria-pressed="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke-dasharray="2.5 2.5"/><path d="M10 9v6M14 9v6"/></svg>
-        <span class="lbl">ביטול הנפשות</span>
-      </button>
-      <button class="a11y-tile" data-a11y="img" data-steps="0" data-labels="" data-base="הסתרת תמונות" aria-pressed="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="15" height="14" rx="2"/><path d="m3 16 4-4 4 4 3-3 4 4"/><path d="m17 3 4 4M21 3l-4 4"/></svg>
-        <span class="lbl">הסתרת תמונות</span>
-      </button>
-      <button class="a11y-tile" data-a11y="dys" data-steps="0" data-labels="" data-base="תמיכה בדיסלקציה" aria-pressed="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18V6h3a6 6 0 0 1 0 12z"/><path d="M15 18V9h5M15 13h4"/><path d="M14 9a3 3 0 0 1 3-3"/></svg>
-        <span class="lbl">תמיכה בדיסלקציה</span>
-      </button>
-      <button class="a11y-tile" data-a11y="cursor" data-steps="0" data-labels="" data-base="סמן גדול" aria-pressed="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l14 10-6 1.2 3.6 6.3-2.6 1.5-3.6-6.3L6 20z"/></svg>
-        <span class="lbl">סמן גדול</span>
-      </button>
-      <button class="a11y-tile" data-a11y="tips" data-steps="0" data-labels="" data-base="תיאורים" aria-pressed="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v12H9l-5 4z"/><path d="M12 8v.01M12 11v3"/></svg>
-        <span class="lbl">תיאורים</span>
-      </button>
-      <button class="a11y-tile" data-a11y="lh" data-steps="3" data-labels="גובה שורה 1.8|גובה שורה 2.1|גובה שורה 2.4" data-base="גובה שורה" aria-pressed="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 6h11M10 10h11M10 14h11M10 18h11"/><path d="M5 4v16M3 6l2-2 2 2M3 18l2 2 2-2"/></svg>
-        <span class="lbl">גובה שורה</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-      </button>
-      <button class="a11y-tile" data-a11y="align" data-steps="3" data-labels="יישור לימין|יישור למרכז|יישור לשמאל" data-base="יישור טקסט" aria-pressed="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M8 10h12M4 14h16M8 18h12"/></svg>
-        <span class="lbl">יישור טקסט</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-      </button>
-      <button class="a11y-tile" data-a11y="sat" data-steps="3" data-labels="רוויה נמוכה|רוויה גבוהה|שחור-לבן" data-base="רוויה" aria-pressed="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s7 7.5 7 12a7 7 0 0 1-14 0c0-4.5 7-12 7-12z"/><path d="M12 21a7 7 0 0 1-7-6" fill="none"/></svg>
-        <span class="lbl">רוויה</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-      </button>
-    </div>
-    <button class="a11y-reset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.3L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.5 6.3L3 16"/><path d="M3 21v-5h5"/></svg>איפוס כל הגדרות הנגישות</button>
-    <div class="a11y-docs">
-      <a href="accessibility.html">הצהרת נגישות</a>
-      <a href="privacy.html">מדיניות פרטיות</a>
-    </div>
-    <a class="a11y-by" href="https://ombee.co.il" target="_blank" rel="noopener"><span>תו הנגישות הזה פעיל ע"י</span><img src="images/ombee-logo.webp" alt="OMBee"></a>
-  </div>
-  <div class="a11y-tip" role="tooltip" hidden></div>
-</div>
 <script src="assets/site.js"></script>
+<script src="assets/a11y.js"></script>
 </body>
 </html>
